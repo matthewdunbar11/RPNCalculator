@@ -22,6 +22,16 @@ describe RPNCalculator do
 		expect(@rpn_calculator.Result).to eq(4)
 	end
 	
+	it 'should ignore an operator if sent first' do
+		expect {
+			@rpn_calculator.Input('+')
+		}.not_to raise_exception
+
+		@rpn_calculator.Input('7')
+		@rpn_calculator.Input('4')
+		@rpn_calculator.Input('-')
+		expect(@rpn_calculator.Result).to eq(3)
+	end
 
 	it 'should add two most recent numbers if more than two numbers are entered' do
 		@rpn_calculator.Input('4')
@@ -101,4 +111,62 @@ describe RPNCalculator do
 
 		expect(@rpn_calculator.Result).to eq(-1)
 	end
+
+	it 'should divide two numbers' do
+		@rpn_calculator.Input('7')
+		@rpn_calculator.Input('2')
+		@rpn_calculator.Input('/')
+
+		expect(@rpn_calculator.Result).to eq(3.5)
+	end
+
+	it 'should perform all four operations at once' do
+		@rpn_calculator.Input('-6')
+		@rpn_calculator.Input('3')
+		@rpn_calculator.Input('+')
+		expect(@rpn_calculator.Result).to eq(-3)
+
+		@rpn_calculator.Input('-1')
+		@rpn_calculator.Input('-')
+		expect(@rpn_calculator.Result).to eq(-2)
+
+		@rpn_calculator.Input('2')
+		@rpn_calculator.Input('/')
+		expect(@rpn_calculator.Result).to eq(-1)
+
+		@rpn_calculator.Input('2.5')
+		@rpn_calculator.Input('*')
+		expect(@rpn_calculator.Result).to eq(-2.5)
+
+		@rpn_calculator.Input('-9')
+		@rpn_calculator.Input('+')
+		expect(@rpn_calculator.Result).to eq(-11.5)
+
+	end
+
+	it 'should return the entered number' do
+		expect(@rpn_calculator.Input('-6')).to eq(-6)
+	end
+
+	it 'should return the result if an operator is passed' do
+		@rpn_calculator.Input('7')
+		@rpn_calculator.Input('3')
+		expect(@rpn_calculator.Input('-')).to eq(4)
+	end
+
+	it 'should be able to handle a float value' do
+		@rpn_calculator.Input(6)
+		@rpn_calculator.Input(3)
+		expect(@rpn_calculator.Input('*')).to eq(18)
+	end
+
+	it 'should pull from extra input numbers' do
+		@rpn_calculator.Input(5)
+		@rpn_calculator.Input(9)
+		@rpn_calculator.Input(1)
+		@rpn_calculator.Input('-')
+		expect(@rpn_calculator.Input('/')).to eq(0.625)
+
+	end
+
 end
