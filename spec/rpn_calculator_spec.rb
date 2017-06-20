@@ -1,6 +1,4 @@
 require_relative '../rpn_calculator'
-require_relative '../incorrect_inputs_error'
-
 
 describe RPNCalculator do
 	before :each do
@@ -18,10 +16,10 @@ describe RPNCalculator do
 	it 'should assume starting result of 0 if only one number added' do
 		@rpn_calculator.Input('4')
 		@rpn_calculator.Input('+')
-		
+
 		expect(@rpn_calculator.Result).to eq(4)
 	end
-	
+
 	it 'should ignore an operator if sent first' do
 		expect {
 			@rpn_calculator.Input('+')
@@ -81,7 +79,7 @@ describe RPNCalculator do
 		@rpn_calculator.Input('-7.1')
 		@rpn_calculator.Input('*')
 
-		expect(@rpn_calculator.Result).to eq(14.91)		
+		expect(@rpn_calculator.Result).to eq(14.91)
 	end
 
 	it 'should multiply ater adding' do
