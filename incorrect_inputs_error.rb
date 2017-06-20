@@ -1,2 +1,0 @@
-class IncorrectInputsError < StandardError
-end
