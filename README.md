@@ -12,7 +12,7 @@ I could have used two separate methods on the calculator, one for numbers and on
 
 Trade-Offs
 -------------------
-One trade-off made is using exceptions for determining if the input is a number. I used REGEX at first but decided against rewriting functionality that comes built in Ruby. Exceptions aren't best used for program flow, but it made sense in this instance. Given more time, I would look into better ways to determine if a string is a number, potentially abstracting the check away into a separate method. I will also separate the Input method out into smaller, easier to test methods once it grows
+One trade-off made is using exceptions for determining if the input is a number. I used REGEX at first but decided against rewriting functionality that comes built in Ruby. Exceptions aren't best used for program flow, but it made sense in this instance. Given more time, I would look into better ways to determine if a string is a number, potentially abstracting the check away into a separate method. I will also separate the Input method out into smaller, easier to test methods once it grows.
 
 Testing
 -------------------
